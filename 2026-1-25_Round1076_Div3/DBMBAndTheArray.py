@@ -18,10 +18,9 @@ def main():
         # ans = solve(n, arr)
 
         # ---------- INPUT PATTERN 2 ----------
-        # n, m = map(int, read().split())
-        # arr = list(map(int, read().split()))
-        # queries = [tuple(map(int, read().split())) for _ in range(m)]
-        # ans = solve(n, m, arr, queries)
+        n, s, x = map(int, read().split())
+        arr = list(map(int, read().split()))
+        ans = solve(n, s, x, arr)
 
         # ---------- INPUT PATTERN 3 ----------
         # n = int(read())
@@ -33,10 +32,13 @@ def main():
         # ans = solve(a, b, c)
 
         write(str(ans) + "\n")
-        # for lists
-        write(" ".join(map(str, ans)) + "\n")
 
-
+def solve(n, s, x, arr):
+    remainder = s - sum(arr)
+    if remainder >= 0 and remainder % x == 0:
+        return "YES"
+    else:
+        return "NO"
 
 if __name__ == "__main__":
     main()

@@ -18,10 +18,11 @@ def main():
         # ans = solve(n, arr)
 
         # ---------- INPUT PATTERN 2 ----------
-        # n, m = map(int, read().split())
-        # arr = list(map(int, read().split()))
-        # queries = [tuple(map(int, read().split())) for _ in range(m)]
-        # ans = solve(n, m, arr, queries)
+        n, q = map(int, read().split())
+        arrA = list(map(int, read().split()))
+        arrB = list(map(int, read().split()))
+        queries = [tuple(map(int, read().split())) for _ in range(q)]
+        ans = solve(n, q, arrA, arrB, queries)
 
         # ---------- INPUT PATTERN 3 ----------
         # n = int(read())
@@ -32,10 +33,25 @@ def main():
         # a, b, c = map(int, read().split())
         # ans = solve(a, b, c)
 
-        write(str(ans) + "\n")
+        # write(str(ans) + "\n")
         # for lists
         write(" ".join(map(str, ans)) + "\n")
 
+def solve(n, q, A, B, queries):
+    results = []
+    # maximize vertically
+    for i in range(n):
+        if A[i] < B[i]:
+            A[i] = B[i]
+    # maximize horizontally
+    for i in range(n-1):
+        if A[i] < A[i+1]:
+            A[i] = A[i+1]
+    for query in queries:
+        # sum the range
+        for l, r in [query]:
+            results.append(sum(A[l-1:r]))
+    return results
 
 
 if __name__ == "__main__":

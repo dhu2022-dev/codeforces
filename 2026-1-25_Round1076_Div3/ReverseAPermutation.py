@@ -13,9 +13,9 @@ def main():
     for _ in range(t):
 
         # ---------- INPUT PATTERN 1 ----------
-        # n = int(read())
-        # arr = list(map(int, read().split()))
-        # ans = solve(n, arr)
+        n = int(read())
+        arr = list(map(int, read().split()))
+        ans = solve(n, arr)
 
         # ---------- INPUT PATTERN 2 ----------
         # n, m = map(int, read().split())
@@ -32,11 +32,26 @@ def main():
         # a, b, c = map(int, read().split())
         # ans = solve(a, b, c)
 
-        write(str(ans) + "\n")
-        # for lists
         write(" ".join(map(str, ans)) + "\n")
 
+def solve(n, arr):
+    # lookup table for O(1) indexing
+    pos = [0] * (n + 1)
+    for index, value in enumerate(arr):
+        pos[value] = index
 
+    i = 0
+    while i < n and arr[i] == n - i:
+        i += 1
+    
+    if i == n:
+        return arr
+    
+    target = n - i
+    j = pos[target]
+
+    arr[i:j+1] = reversed(arr[i:j+1])
+    return arr
 
 if __name__ == "__main__":
     main()
