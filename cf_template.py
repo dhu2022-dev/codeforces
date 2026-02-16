@@ -34,7 +34,7 @@ def main():
 
         write(str(ans) + "\n")
         # for lists
-        write(" ".join(map(str, ans)) + "\n")
+        #write(" ".join(map(str, ans)) + "\n")
 
 
 
