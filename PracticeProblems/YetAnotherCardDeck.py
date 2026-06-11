@@ -1,3 +1,5 @@
+# Educational Codeforces Round 107 Problem C
+
 import sys
 
 def main():
